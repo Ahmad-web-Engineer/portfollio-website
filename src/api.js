@@ -6,7 +6,7 @@ export const fix=d=>{d=d||clone(SEED);if(!d.layout)d.layout=clone(LAY);LAY.forEa
 const KEY='portfolio-cv-react'
 export async function load(){
   let local=null;try{local=JSON.parse(localStorage.getItem(KEY))}catch{}
-  if(location.protocol!=='file:')try{const r=await fetch('/api/resume',{cache:'no-store'});if(r.ok){const d=await r.json();if(d&&d.basics)return fix(local&&(local.updated||0)>(d.updated||0)?local:d)}}catch{}
+  if(location.protocol!=='file:')try{const r=await fetch('/api/resume?t='+Date.now(),{cache:'no-store'});if(r.ok){const d=await r.json();if(d&&d.basics)return fix(local&&(local.updated||0)>(d.updated||0)?local:d)}}catch{}
   return fix(local&&local.basics?local:clone(SEED))
 }
 export async function save(D,key){
@@ -17,6 +17,10 @@ export async function save(D,key){
   const r=await fetch('/api/resume',{method:'POST',headers:{'Content-Type':'application/json','x-admin-key':key},body})
   const t=await r.text().catch(()=>'');let j={};try{j=JSON.parse(t)}catch{}
   if(!r.ok||!j.ok){const m=j.error||(r.status===404?'API not found (404). Use the deployed site or `vercel dev`, not `npm run dev`.':r.status===413?'Too much data (413). Remove or shrink images.':'Save failed ('+r.status+'): '+t.replace(/<[^>]*>/g,' ').trim().slice(0,120));const e=new Error(m);e.code=r.status;throw e}
-  const g=await fetch('/api/resume',{cache:'no-store'}).then(x=>x.json()).catch(()=>null)
+  let g=await fetch('/api/resume?t='+Date.now(),{cache:'no-store'}).then(x=>x.json()).catch(()=>null)
+  if(!g||(g.updated||0)!==(D.updated||0)){
+    await new Promise(res=>setTimeout(res,600))
+    g=await fetch('/api/resume?t='+Date.now(),{cache:'no-store'}).then(x=>x.json()).catch(()=>null)
+  }
   if(!g||(g.updated||0)!==(D.updated||0))throw new Error('Saved, but could not confirm it is live. Press Save now.')
 }
