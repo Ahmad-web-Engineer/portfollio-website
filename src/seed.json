@@ -1,0 +1,112 @@
+{
+ "updated": 0,
+ "basics": {
+  "name": "Mohammad Ahmad",
+  "title": "Java Backend Developer",
+  "typed": "Java Backend Developer, Spring Boot & JWT, REST APIs & PostgreSQL",
+  "openText": "Open to entry-level Java backend roles",
+  "email": "a44779261@gmail.com",
+  "phone": "+91 7860981562",
+  "location": "Uttar Pradesh, India",
+  "summary": "Computer Science Engineering graduate with strong foundations in Java, Object-Oriented Programming, Data Structures & Algorithms, and DBMS. Hands-on experience with Spring Boot, Spring Security, JWT authentication, REST APIs, and relational databases. Seeking an entry-level Java Backend Developer, Java Developer, or Software Engineer role.",
+  "links": [
+   {
+    "label": "GitHub",
+    "url": "https://github.com/Ahmad-web-Engineer"
+   },
+   {
+    "label": "LinkedIn",
+    "url": "https://linkedin.com/in/mohammad-ahmad-0998361ab"
+   }
+  ]
+ },
+ "skills": [
+  {
+   "name": "React",
+   "level": ""
+  },
+  {
+   "name": "HTML",
+   "level": ""
+  },
+  {
+   "name": "CSS",
+   "level": ""
+  },
+  {
+   "name": "SQL",
+   "level": ""
+  },
+  {
+   "name": "OOP",
+   "level": ""
+  },
+  {
+   "name": "DSA",
+   "level": ""
+  },
+  {
+   "name": "DBMS",
+   "level": ""
+  },
+  {
+   "name": "Exception Handling",
+   "level": ""
+  },
+  {
+   "name": "Collections Framework",
+   "level": ""
+  },
+  {
+   "name": "Operating Systems",
+   "level": ""
+  },
+  {
+   "name": "Git",
+   "level": ""
+  },
+  {
+   "name": "GitHub",
+   "level": ""
+  },
+  {
+   "name": "Postman",
+   "level": ""
+  }
+ ],
+ "projects": [
+  {
+   "name": "Airbnb Backend Clone",
+   "link": "",
+   "skills": "Java, Spring Boot, Spring Security, JWT, PostgreSQL, REST APIs, Authentication, Authorization",
+   "desc": "Airbnb-style backend with a layered architecture: JWT-based authentication and authorization, REST APIs with business logic, and PostgreSQL for persistent data. Built while following Coding Shuttle's Spring Boot and Authentication modules.",
+   "learned": "Spring Boot fundamentals: dependency injection, controllers, services and structured backend design. Securing APIs with Spring Security and JWT."
+  },
+  {
+   "name": "School Management System",
+   "link": "",
+   "skills": "Google Apps Script, JavaScript, CRUD Operations",
+   "desc": "Web app for student enrollment, profile management and administrative workflows, with Google Sheets as the data store and automated fee calculation and tracking.",
+   "learned": "Building CRUD API logic on Google Apps Script, plus input validation and error handling to keep data consistent."
+  }
+ ],
+ "certs": [],
+ "experience": [],
+ "education": [
+  {
+   "school": "Jahangirabad Institute of Technology (AKTU)",
+   "degree": "B.Tech in Computer Science & Engineering",
+   "year": "CGPA 7.23/10"
+  },
+  {
+   "school": "Intermediate (Class XII)",
+   "degree": "Board Examination",
+   "year": "77%"
+  },
+  {
+   "school": "High School (Class X)",
+   "degree": "Board Examination",
+   "year": "74%"
+  }
+ ]
+}
