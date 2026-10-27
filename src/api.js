@@ -2,7 +2,19 @@ import SEED from './seed.json'
 export const LS={get:k=>{try{return localStorage.getItem(k)}catch{return null}},set:(k,v)=>{try{localStorage.setItem(k,v)}catch{}},del:k=>{try{localStorage.removeItem(k)}catch{}}}
 export const clone=o=>JSON.parse(JSON.stringify(o))
 export const LAY=[{k:'skills',t:'Skills',on:true},{k:'projects',t:'Projects',on:true},{k:'experience',t:'Experience',on:true},{k:'education',t:'Education',on:true},{k:'certs',t:'Certifications',on:true},{k:'contact',t:'Contact',on:true}]
-export const fix=d=>{d=d||clone(SEED);if(!d.layout)d.layout=clone(LAY);LAY.forEach(x=>{if(!d.layout.some(y=>y.k===x.k))d.layout.push(clone(x))});return d}
+export const fix=d=>{
+  const s=clone(SEED);
+  if(!d||typeof d!=='object')return s;
+  d.basics={...s.basics,...(d.basics||{})};
+  d.skills=Array.isArray(d.skills)?d.skills:s.skills;
+  d.projects=Array.isArray(d.projects)?d.projects:s.projects;
+  d.experience=Array.isArray(d.experience)?d.experience:s.experience;
+  d.education=Array.isArray(d.education)?d.education:s.education;
+  d.certs=Array.isArray(d.certs)?d.certs:s.certs;
+  if(!d.layout||!Array.isArray(d.layout))d.layout=clone(LAY);
+  LAY.forEach(x=>{if(!d.layout.some(y=>y.k===x.k))d.layout.push(clone(x))});
+  return d
+}
 const KEY='portfolio-cv-react'
 export async function load(){
   let local=null;try{local=JSON.parse(localStorage.getItem(KEY))}catch{}

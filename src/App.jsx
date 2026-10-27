@@ -6,8 +6,8 @@ import './styles.css'
 import {load,save,fix,clone,LS} from './api'
 
 const tags=s=>(s||'').split(',').map(x=>x.trim()).filter(Boolean)
-const usedIn=(D,n)=>D.projects.filter(p=>tags(p.skills).some(t=>t.toLowerCase()===n.toLowerCase()))
-function allSkills(D){const m=new Map();D.skills.forEach(s=>s.name&&m.set(s.name.toLowerCase(),{name:s.name,level:s.level}));D.projects.forEach(p=>tags(p.skills).forEach(t=>m.has(t.toLowerCase())||m.set(t.toLowerCase(),{name:t,level:''})));return [...m.values()].map(s=>({...s,n:usedIn(D,s.name).length})).sort((a,b)=>b.n-a.n)}
+const usedIn=(D,n)=>(D.projects||[]).filter(p=>tags(p.skills).some(t=>t.toLowerCase()===n.toLowerCase()))
+function allSkills(D){const m=new Map();(D.skills||[]).forEach(s=>s.name&&m.set(s.name.toLowerCase(),{name:s.name,level:s.level}));(D.projects||[]).forEach(p=>tags(p.skills).forEach(t=>m.has(t.toLowerCase())||m.set(t.toLowerCase(),{name:t,level:''})));return [...m.values()].map(s=>({...s,n:usedIn(D,s.name).length})).sort((a,b)=>b.n-a.n)}
 const download=(txt,name,type)=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type}));a.download=name;a.click()}
 const getRoute=()=>{const h=location.hash,p=location.pathname;return /^#\/?admin/.test(h)||/\/admin\/?$/.test(p)?'admin':/^#\/?resume/.test(h)||/\/resume\/?$/.test(p)?'resume':'site'}
 
